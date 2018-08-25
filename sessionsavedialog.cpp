@@ -23,7 +23,7 @@ sessionSaveDialog::sessionSaveDialog(QWidget *parent) :QDialog(parent),ui(new Ui
     ui->setupUi(this);
 
     // set stylesheet from style.qrc
-    setStyleSheet(Utilities::getStylesheetFileContent(":/appStyle/style/Dialog.qss"));
+    setStyleSheet(Utilities::getStylesheetFileContent(Utilities::StyleAppName::DialogStyle));
 
     sName = "";
 

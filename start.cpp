@@ -23,7 +23,7 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
     ui->setupUi(this);
 
     // set stylesheet from style.qrc
-    setStyleSheet(Utilities::getStylesheetFileContent(":/appStyle/style/Start.qss"));
+    setStyleSheet(Utilities::getStylesheetFileContent(Utilities::StyleAppName::StartStyle));
 
     // set window size
     int x = static_cast<int>(Utilities::screensize().width()  * .8);
