@@ -29,12 +29,12 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
 
-#include "settingsmanage.h"
-#include "utilities.h"
-//#include "bookmarks/bookmarkmanage.h"
-#include "globalfunctions.h"
 #include "slidingstackedwidget.h"
 
+#include <cprime/utilities.h>
+#include <cprime/settingsmanage.h>
+#include <cprime/bookmarkmanage.h>
+#include <cprime/globalfunctions.h>
 
 namespace Ui {
 class Start;

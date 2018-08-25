@@ -14,13 +14,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, see {http://www.gnu.org/licenses/}. */
 
-#include "utilities.h"
-#include "settingsmanage.h"
 #include "start.h"
 
 #include <QApplication>
 #include <QFont>
 #include <QStyleFactory>
+
+#include <cprime/utilities.h>
+#include <cprime/settingsmanage.h>
 
 
 void startSetup()
@@ -56,8 +57,8 @@ int main(int argc, char *argv[])
     app.setOrganizationName("CoreBox");
     app.setApplicationName("Start");
 
-    Start e;
-    e.show();
+    Start s;
+    s.show();
 
     return app.exec();
 }

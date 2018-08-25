@@ -82,49 +82,49 @@ void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item) // open Speed
 
 void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item) // open SpeedDial on doubleclick
 {
-//    BookmarkManage bk;
+    BookmarkManage bk;
     // Function from utilities.cpp
-//    GlobalFunc::appSelectionEngine(bk.bookmarkPath("Speed Dial", item->text()));
+    GlobalFunc::appSelectionEngine(bk.bookmarkPath("Speed Dial", item->text()));
 }
 
 void Start::loadSpeedDial() // populate SpeedDial list
 {
-//    ui->speedDialB->clear();
+    ui->speedDialB->clear();
 
-//    BookmarkManage bk;
-//    QStringList list = bk.getBookNames("Speed Dial");
-//    QStringList mList;
-//    mList.clear();
+    BookmarkManage bk;
+    QStringList list = bk.getBookNames("Speed Dial");
+    QStringList mList;
+    mList.clear();
 
-//    QStringList dateTimeList;
-//    dateTimeList.clear();
+    QStringList dateTimeList;
+    dateTimeList.clear();
 
-//    foreach (QString s, list) {
-//        dateTimeList.append(bk.bookingTime("Speed Dial", s));
-//    }
-//    Utilities::sortDateTime(dateTimeList);
+    foreach (QString s, list) {
+        dateTimeList.append(bk.bookingTime("Speed Dial", s));
+    }
+    Utilities::sortDateTime(dateTimeList);
 
-//    int count = list.count();
-//    int reverse = count - 1;
-//    for (int i = 0; i < count; i++) {
-//        for (int j = 0; j < count; j++) {
-//            QString bTime = bk.bookingTime("Speed Dial", list.at(j));
-//            if (bTime.contains(dateTimeList.at(i))) {
-//                mList.insert(reverse, list.at(j));
-//                reverse--;
-//            }
-//        }
-//    }
-//    dateTimeList.clear();
-//    list.clear();
+    int count = list.count();
+    int reverse = count - 1;
+    for (int i = 0; i < count; i++) {
+        for (int j = 0; j < count; j++) {
+            QString bTime = bk.bookingTime("Speed Dial", list.at(j));
+            if (bTime.contains(dateTimeList.at(i))) {
+                mList.insert(reverse, list.at(j));
+                reverse--;
+            }
+        }
+    }
+    dateTimeList.clear();
+    list.clear();
 
-//    for (int i = 0; i < mList.count(); ++i) {
-//        if (i == 15) {
-//            return;
-//        } else {
-//            ui->speedDialB->addItem(new QListWidgetItem(Utilities::getFileIcon(bk.bookmarkPath("Speed Dial", mList.at(i))), mList.at(i)));
-//        }
-//    }
+    for (int i = 0; i < mList.count(); ++i) {
+        if (i == 15) {
+            return;
+        } else {
+            ui->speedDialB->addItem(new QListWidgetItem(Utilities::getFileIcon(bk.bookmarkPath("Speed Dial", mList.at(i))), mList.at(i)));
+        }
+    }
 }
 // =============================
 

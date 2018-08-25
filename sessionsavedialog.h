@@ -22,7 +22,7 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QDir>
 #include <QDebug>
 
-#include "utilities.h"
+#include <cprime/utilities.h>
 
 
 namespace Ui {
