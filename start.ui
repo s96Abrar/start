@@ -420,7 +420,7 @@
           </property>
           <property name="icon">
            <iconset resource="icons.qrc">
-            <normaloff>:/app/icons/app-icons/CoreRenemer.svg</normaloff>:/app/icons/app-icons/CoreRenemer.svg</iconset>
+            <normaloff>:/app/icons/app-icons/CoreRenamer.svg</normaloff>:/app/icons/app-icons/CoreRenamer.svg</iconset>
           </property>
          </item>
          <item>
