@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>394</width>
-    <height>144</height>
+    <height>149</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,8 +20,8 @@
    <string>SaveSession</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../icons.qrc">
-    <normaloff>:/app/icons/app-icons/Box.svg</normaloff>:/app/icons/app-icons/Box.svg</iconset>
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/Start.svg</normaloff>:/icons/Start.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -153,7 +153,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../icons.qrc"/>
+  <include location="icons.qrc"/>
  </resources>
  <connections/>
 </ui>

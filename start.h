@@ -73,8 +73,6 @@ private:
     void loadRecent();
     void loadSession();
     void pageClick(QPushButton *btn, int i);
-    GlobalFunc::AppsName nameToInt(QString appName);
-    QIcon appsIcon(QString appName);
 };
 
 #endif // START_H

@@ -73,7 +73,7 @@ Start::~Start()
 // ======== Core Apps ==========
 void Start::on_appCollect_itemDoubleClicked(QListWidgetItem *item) // open SpeedDial on CoreApps
 {
-    GlobalFunc::appEngines(item->text(),"");
+    GlobalFunc::systemAppOpener(item->text(),"");
 }
 // =============================
 
@@ -208,11 +208,11 @@ void Start::on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column)
             QTreeWidgetItem *midChildT = item->child(i);
             if (midChildT->childCount()) {
                 for (int j = 0; j < midChildT->childCount(); j++) {
-                    GlobalFunc::appEngines(midChildT->text(0), midChildT->child(j)->text(0));
+                    GlobalFunc::systemAppOpener(midChildT->text(0), midChildT->child(j)->text(0));
                 }
             } else {
                 // Need to fix session
-                GlobalFunc::appEngines(midChildT->text(0));
+                GlobalFunc::systemAppOpener(midChildT->text(0));
             }
         }
         Utilities::messageEngine("Session restored successfully", Utilities::MessageType::Info);
@@ -254,7 +254,7 @@ void Start::loadSession()
                 if (session.childKeys().count() >= 1) {
                     QTreeWidgetItem *midChildT = new QTreeWidgetItem;
                     midChildT->setText(0, gKey);
-                    midChildT->setIcon(0, appsIcon(gKey));
+                    midChildT->setIcon(0, Utilities::getAppIcon(gKey));
 
                     QStringList keys = session.childKeys();
                     Utilities::sortTime(keys, Utilities::sortOrder::DESCENDING, "hh.mm.ss.zzz");
@@ -264,7 +264,7 @@ void Start::loadSession()
                         if (value.count()) {
                             QTreeWidgetItem *child = new QTreeWidgetItem;
                             child->setText(0, value);
-                            child->setIcon(0, value.count() ? Utilities::getAppIcon(value) : appsIcon(gKey));
+                            child->setIcon(0, value.count() ? Utilities::getAppIcon(value) : Utilities::getAppIcon(gKey));
                             midChildT->addChild(child);
                         }
                     }
@@ -408,85 +408,4 @@ void Start::reload(const QString &path)
     }
 }
 
-GlobalFunc::AppsName Start::nameToInt(QString appName)
-{
-    if (appName == "CoreFM" || appName == "corefm") {
-        return GlobalFunc::AppsName::CoreFM;
-    } else if (appName == "CoreImage" || appName == "coreimage") {
-        return GlobalFunc::AppsName::CoreImage;
-    } else if (appName == "CorePad" || appName == "corepad") {
-        return GlobalFunc::AppsName::CorePad;
-    } else if (appName == "CorePaint" || appName == "corepaint") {
-        return GlobalFunc::AppsName::CorePaint;
-    } else if (appName == "CorePlayer" || appName == "coreplayer") {
-        return GlobalFunc::AppsName::CorePlayer;
-    } else if (appName == "DashBoard" || appName == "dashboard") {
-        return GlobalFunc::AppsName::Dashboard;
-    } else if (appName == "Bookmarks" || appName == "bookmarks") {
-        return GlobalFunc::AppsName::Bookmarks;
-    } else if (appName == "About" || appName == "about") {
-        return GlobalFunc::AppsName::About;
-    } else if (appName == "Start" || appName == "start") {
-        return GlobalFunc::AppsName::StartView;
-    } else if (appName == "Help" || appName == "help") {
-        return GlobalFunc::AppsName::Help;
-    } else if (appName == "Settings" || appName == "settings") {
-        return GlobalFunc::AppsName::Settings;
-    } else if (appName == "Search" || appName == "search") {
-        return GlobalFunc::AppsName::Search;
-    } else if (appName == "CoreTime" || appName == "coretime") {
-        return GlobalFunc::AppsName::CoreTime;
-    } else if (appName == "CoreRenamer" || appName == "corerenamer") {
-        return GlobalFunc::AppsName::CoreRenamer;
-    } else if (appName == "CorePDF" || appName == "corepdf") {
-        return GlobalFunc::AppsName::CorePDF;
-    } else if (appName == "CoreTerminal" || appName == "coreterminal") {
-        return GlobalFunc::AppsName::CoreTerminal;
-    } else {
-        return GlobalFunc::AppsName::damn;
-    }
-}
 
-QIcon Start::appsIcon(QString appName)
-{
-    QString str = ":/app/icons/app-icons/";
-
-    if (appName == "DashBoard" || appName == "dashboard") {
-        return QIcon(str + "DashBoard.svg");
-    } else if (appName == "Bookmarks" || appName == "bookmarks") {
-        return QIcon(str + "Bookmarks.svg");
-    } else if (appName == "About" || appName == "about") {
-        return QIcon(str + "About.svg");
-    } else if (appName == "Start" || appName == "start") {
-        return QIcon(str + "Start.svg");
-    } else if (appName == "Search" || appName == "search") {
-        return QIcon(str + "Search.svg");
-    } else if (appName == "Help" || appName == "help") {
-        return QIcon(str + "Help.svg");
-    } else if (appName == "Settings" || appName == "settings") {
-        return QIcon(str + "Settings.svg");
-    } else if (appName == "CoreImage" || appName == "coreimage") {
-        return QIcon(str + "CoreImage.svg");
-    } else if (appName == "CorePad" || appName == "corepad") {
-        return QIcon(str + "CorePad.svg");
-    } else if (appName == "CorePaint" || appName == "corepaint") {
-        return QIcon(str + "CorePaint.svg");
-    } else if (appName == "CorePlayer" || appName == "coreplayer") {
-        return QIcon(str + "CorePlayer.svg");
-    } else if (appName == "CorePDF" || appName == "corepdf") {
-        return QIcon(str + "CorePDF.svg");
-    } else if (appName == "CoreTime" || appName == "coretime") {
-        return QIcon(str + "CoreTime.svg");
-    } else if (appName == "CoreFM" || appName == "corefm") {
-        return QIcon(str + "CoreFM.svg");
-    } else if (appName == "CoreTerminal" || appName == "coreterminal") {
-        return QIcon(str + "CoreTerminal.svg");
-    } else if (appName == "CoreRenamer" || appName == "corerenamer") {
-        return QIcon(str + "CoreRenemer.svg");
-    } else if (!appName.isNull() || !appName.isEmpty()) {
-        SettingsManage sm;
-        return QIcon::fromTheme(appName, QIcon::fromTheme(sm.getThemeName()));
-    } else {
-        return QIcon();
-    }
-}
