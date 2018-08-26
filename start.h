@@ -50,7 +50,6 @@ public:
     void reload();
     void reload(const QString &path);
 
-
 private slots:
     void on_recentActivitesL_itemDoubleClicked(QTreeWidgetItem *item, int column);
     void on_appCollect_itemDoubleClicked(QListWidgetItem *item);

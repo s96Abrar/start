@@ -137,10 +137,10 @@ void Start::on_recentActivitesL_itemDoubleClicked(QTreeWidgetItem *item, int col
 
     QStringList s = item->text(column).split("\t\t\t");
 
-    QString appName = s.at(0); // selected ImageViewer name from settings.
+    QString appName = s.at(0);
     QString path = s.at(1);
 
-    QProcess::startDetached(appName, QStringList() << path);
+    GlobalFunc::systemAppOpener(appName,path);
 
     // Function from utilities.cpp
     QString mess = appName + " opening " ;
@@ -166,7 +166,7 @@ void Start::loadRecent() // populate RecentActivity list
             QTreeWidgetItem *child = new QTreeWidgetItem();
             QString value = recentActivity.value(key).toString();
             child->setText(0, value);
-            child->setIcon(0, Utilities::getAppIcon(value.split("\t\t\t").at(0)));
+            child->setIcon(0, Utilities::getAppIcon(value.split("\t\t\t").at(0).toLower()));
             topTree->addChild(child);
         }
         recentActivity.endGroup();
