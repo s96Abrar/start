@@ -122,7 +122,9 @@ void Start::loadSpeedDial() // populate SpeedDial list
         if (i == 15) {
             return;
         } else {
-            ui->speedDialB->addItem(new QListWidgetItem(Utilities::getFileIcon(bk.bookmarkPath("Speed Dial", mList.at(i))), mList.at(i)));
+            QListWidgetItem *item = new QListWidgetItem(Utilities::getFileIcon(bk.bookmarkPath("Speed Dial", mList.at(i))), mList.at(i));
+            item->setSizeHint(QSize(126, 109));
+            ui->speedDialB->addItem(item);
         }
     }
 }

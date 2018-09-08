@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>901</width>
-    <height>533</height>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -259,7 +259,7 @@
           <enum>QAbstractItemView::NoDragDrop</enum>
          </property>
          <property name="defaultDropAction">
-          <enum>Qt::IgnoreAction</enum>
+          <enum>Qt::CopyAction</enum>
          </property>
          <property name="alternatingRowColors">
           <bool>false</bool>
@@ -473,15 +473,6 @@
            <height>450</height>
           </size>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
          </property>
@@ -500,22 +491,16 @@
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
          </property>
-         <property name="dragDropMode">
-          <enum>QAbstractItemView::NoDragDrop</enum>
-         </property>
          <property name="defaultDropAction">
           <enum>Qt::IgnoreAction</enum>
-         </property>
-         <property name="alternatingRowColors">
-          <bool>false</bool>
          </property>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectItems</enum>
          </property>
          <property name="iconSize">
           <size>
-           <width>70</width>
-           <height>70</height>
+           <width>80</width>
+           <height>80</height>
           </size>
          </property>
          <property name="movement">
@@ -532,15 +517,12 @@
          </property>
          <property name="gridSize">
           <size>
-           <width>140</width>
+           <width>130</width>
            <height>113</height>
           </size>
          </property>
          <property name="viewMode">
           <enum>QListView::IconMode</enum>
-         </property>
-         <property name="modelColumn">
-          <number>0</number>
          </property>
          <property name="uniformItemSizes">
           <bool>true</bool>
