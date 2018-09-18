@@ -355,7 +355,7 @@ void Start::pageClick(QPushButton *btn, int i)
     if(btn == ui->recentActivites){
         ui->rClearActivity->setVisible(1);
         ui->rDeleteSession->setVisible(0);
-    } else if(btn == ui->savedSession){
+    } else if(btn == ui->session){
         ui->rClearActivity->setVisible(0);
         ui->rDeleteSession->setVisible(1);
     } else{
@@ -379,9 +379,9 @@ void Start::on_recentActivites_clicked()
     pageClick(ui->recentActivites, 2);
 }
 
-void Start::on_savedSession_clicked()
+void Start::on_session_clicked()
 {
-    pageClick(ui->savedSession, 3);
+    pageClick(ui->session, 3);
 }
 
 void Start::reload()
@@ -409,5 +409,4 @@ void Start::reload(const QString &path)
         loadSession();
     }
 }
-
 

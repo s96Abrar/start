@@ -57,10 +57,11 @@ private slots:
     void on_coreApps_clicked();
     void on_speedDial_clicked();
     void on_recentActivites_clicked();
-    void on_savedSession_clicked();
+    void on_session_clicked();
     void on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column);
     void on_rClearActivity_clicked();
     void on_rDeleteSession_clicked();
+
 
 private:
     Ui::Start *ui;
