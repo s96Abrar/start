@@ -344,13 +344,14 @@ void Start::loadsettings() // load settings
     }
 }
 
-void Start::pageClick(QPushButton *btn, int i)
+void Start::pageClick(QPushButton *btn, int i, QString windowTitle)
 {
     // all button checked false
     for (QPushButton *b : ui->pageButtons->findChildren<QPushButton*>())
         b->setChecked(false);
     btn->setChecked(true);
     ui->pages->slideInIdx(i);
+    this->setWindowTitle(windowTitle + " - Start");
 
     if(btn == ui->recentActivites){
         ui->rClearActivity->setVisible(1);
@@ -366,22 +367,22 @@ void Start::pageClick(QPushButton *btn, int i)
 
 void Start::on_coreApps_clicked()
 {
-    pageClick(ui->coreApps, 0);
+    pageClick(ui->coreApps, 0, "CoreApps");
 }
 
 void Start::on_speedDial_clicked()
 {
-    pageClick(ui->speedDial, 1);
+    pageClick(ui->speedDial, 1, "Speed Dial");
 }
 
 void Start::on_recentActivites_clicked()
 {
-    pageClick(ui->recentActivites, 2);
+    pageClick(ui->recentActivites, 2, "Recent Activites");
 }
 
 void Start::on_session_clicked()
 {
-    pageClick(ui->session, 3);
+    pageClick(ui->session, 3, "Sessions");
 }
 
 void Start::reload()

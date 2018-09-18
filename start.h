@@ -72,7 +72,7 @@ private:
     void loadSpeedDial();
     void loadRecent();
     void loadSession();
-    void pageClick(QPushButton *btn, int i);
+    void pageClick(QPushButton *btn, int i, QString windowTitle);
 };
 
 #endif // START_H
