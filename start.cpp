@@ -40,7 +40,7 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
     loadSpeedDial();
 
     // Configure Recent Activity
-    if (!sm.getDisableRecent()) {
+    if (!sm.getShowRecent()) {
         QString raFile = QDir::homePath() + "/.config/coreBox/RecentActivity";
         QFile file(raFile);
         if (!file.exists()) {
@@ -84,7 +84,7 @@ void Start::on_speedDialB_itemDoubleClicked(QListWidgetItem *item) // open Speed
 {
     BookmarkManage bk;
     // Function from utilities.cpp
-    GlobalFunc::appSelectionEngine(bk.bookmarkPath("Speed Dial", item->text()));
+    GlobalFunc::appSelectionEngine(bk.bookmarkPath("Speed Dial", item->text()),this);
 }
 
 void Start::loadSpeedDial() // populate SpeedDial list
@@ -334,7 +334,7 @@ void Start::on_rDeleteSession_clicked()
 void Start::loadsettings() // load settings
 {
     // Check is recent disabled or not
-    if (sm.getDisableRecent()) {
+    if (sm.getShowRecent()) {
         ui->recentActivites->setVisible(0);
         ui->recentActivitesL->clear();
         ui->pages->setCurrentIndex(0);
@@ -390,7 +390,7 @@ void Start::reload()
     loadSpeedDial();
     loadSession();
     loadsettings();
-    if (!sm.getDisableRecent())
+    if (!sm.getShowRecent())
         loadRecent();
     else on_coreApps_clicked();
 }
@@ -399,7 +399,7 @@ void Start::reload(const QString &path)
 {
     QFileInfo fi(path);
     if (fi.fileName() == "RecentActivity") {
-        if (!sm.getDisableRecent())
+        if (!sm.getShowRecent())
             loadRecent();
         // Hopefully this is not needed
         else on_coreApps_clicked();
