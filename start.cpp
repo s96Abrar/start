@@ -40,7 +40,7 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
     loadSpeedDial();
 
     // Configure Recent Activity
-    if (!sm.getShowRecent()) {
+    if (sm.getShowRecent()) {
         QString raFile = QDir::homePath() + "/.config/coreBox/RecentActivity";
         QFile file(raFile);
         if (!file.exists()) {
@@ -168,7 +168,7 @@ void Start::loadRecent() // populate RecentActivity list
             QTreeWidgetItem *child = new QTreeWidgetItem();
             QString value = recentActivity.value(key).toString();
             child->setText(0, value);
-            child->setIcon(0, Utilities::getAppIcon(value.split("\t\t\t").at(0)));
+            child->setIcon(0, Utilities::getAppIcon(value.split("\t\t\t").at(0).toLower()));
             topTree->addChild(child);
         }
         recentActivity.endGroup();
@@ -256,7 +256,7 @@ void Start::loadSession()
                 if (session.childKeys().count() >= 1) {
                     QTreeWidgetItem *midChildT = new QTreeWidgetItem;
                     midChildT->setText(0, gKey);
-                    midChildT->setIcon(0, Utilities::getAppIcon(gKey));
+                    midChildT->setIcon(0, Utilities::getAppIcon(gKey.toLower()));
 
                     QStringList keys = session.childKeys();
                     Utilities::sortTime(keys, Utilities::sortOrder::DESCENDING, "hh.mm.ss.zzz");
@@ -266,7 +266,7 @@ void Start::loadSession()
                         if (value.count()) {
                             QTreeWidgetItem *child = new QTreeWidgetItem;
                             child->setText(0, value);
-                            child->setIcon(0, value.count() ? Utilities::getAppIcon(value) : Utilities::getAppIcon(gKey));
+                            child->setIcon(0, value.count() ? Utilities::getAppIcon(value.toLower()) : Utilities::getAppIcon(gKey.toLower()));
                             midChildT->addChild(child);
                         }
                     }
@@ -334,7 +334,7 @@ void Start::on_rDeleteSession_clicked()
 void Start::loadsettings() // load settings
 {
     // Check is recent disabled or not
-    if (sm.getShowRecent()) {
+    if (sm.getShowRecent() == 0) {
         ui->recentActivites->setVisible(0);
         ui->recentActivitesL->clear();
         ui->pages->setCurrentIndex(0);

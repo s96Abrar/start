@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Start
+Comment=Start is CoreApps activity viewer.
+Exec=start
+Icon=/usr/share/coreapps/icons/start.svg
+Type=Application
+Categories=Utility;Qt;
+Terminal=false
+StartupNotify=true

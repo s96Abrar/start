@@ -23,6 +23,6 @@
     </qresource>
     <qresource prefix="/">
         <file>icons/delete.svg</file>
-        <file>icons/Start.svg</file>
+        <file>icons/start.svg</file>
     </qresource>
 </RCC>

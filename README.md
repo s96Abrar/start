@@ -1,7 +1,7 @@
 # Start
 An app of CoreApps family.Start is CoreApps activity viewer.
 
-<img src="Start.png" width="500">
+<img src="start.png" width="500">
 
 ### Download
 
