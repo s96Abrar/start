@@ -28,8 +28,10 @@ along with this program; if not, see {http://www.gnu.org/licenses/}. */
 #include <QMetaType>
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
+#include <QMenu>
 
 #include "slidingstackedwidget.h"
+#include "sessionsavedialog.h"
 
 #include <cprime/utilities.h>
 #include <cprime/settingsmanage.h>
@@ -59,20 +61,27 @@ private slots:
     void on_recentActivites_clicked();
     void on_session_clicked();
     void on_sessionsList_itemDoubleClicked(QTreeWidgetItem *item, int column);
-    void on_rClearActivity_clicked();
     void on_rDeleteSession_clicked();
+    void on_actionAdd_Session_triggered();
+    void on_actionDelete_Session_triggered();
+    void on_actionEdit_Session_triggered();
+    void on_actionDelete_App_triggered();
+    void on_actionClear_Activites_triggered();
 
+    void on_actionAdd_App_triggered();
 
 private:
     Ui::Start *ui;
     SettingsManage sm;
     QFileSystemWatcher *fswStart;
+    int currentPage = 0;
 
     void loadsettings();
     void loadSpeedDial();
     void loadRecent();
     void loadSession();
     void pageClick(QPushButton *btn, int i, QString windowTitle);
+    QMenu *globalmenu();
 };
 
 #endif // START_H

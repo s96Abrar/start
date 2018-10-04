@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>901</width>
-    <height>536</height>
+    <height>537</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,9 +56,15 @@
       </property>
       <item>
        <widget class="QPushButton" name="coreApps">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>150</width>
+          <width>0</width>
           <height>0</height>
          </size>
         </property>
@@ -81,9 +87,15 @@
       </item>
       <item>
        <widget class="QPushButton" name="speedDial">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>150</width>
+          <width>0</width>
           <height>0</height>
          </size>
         </property>
@@ -106,9 +118,15 @@
       </item>
       <item>
        <widget class="QPushButton" name="recentActivites">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>190</width>
+          <width>0</width>
           <height>0</height>
          </size>
         </property>
@@ -128,9 +146,15 @@
       </item>
       <item>
        <widget class="QPushButton" name="session">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>0</width>
           <height>0</height>
          </size>
         </property>
@@ -201,13 +225,39 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QToolButton" name="menu">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="icons.qrc">
+          <normaloff>:/icons/menu.svg</normaloff>:/icons/menu.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="popupMode">
+         <enum>QToolButton::InstantPopup</enum>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+        <property name="arrowType">
+         <enum>Qt::NoArrow</enum>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
    <item>
     <widget class="slidingStackedWidget" name="pages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="pcoreApps">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -644,6 +694,36 @@
     </widget>
    </item>
   </layout>
+  <action name="actionAdd_Session">
+   <property name="text">
+    <string>Add Session</string>
+   </property>
+  </action>
+  <action name="actionDelete_Session">
+   <property name="text">
+    <string>Delete Session</string>
+   </property>
+  </action>
+  <action name="actionEdit_Session">
+   <property name="text">
+    <string>Edit Session</string>
+   </property>
+  </action>
+  <action name="actionDelete_App">
+   <property name="text">
+    <string>Delete App</string>
+   </property>
+  </action>
+  <action name="actionClear_Activites">
+   <property name="text">
+    <string>Clear Activites</string>
+   </property>
+  </action>
+  <action name="actionAdd_App">
+   <property name="text">
+    <string>Add App</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

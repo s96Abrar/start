@@ -53,6 +53,7 @@ Start::Start(QWidget *parent) :QWidget(parent),ui(new Ui::Start)
     }
 
     loadSession();
+    ui->menu->setMenu(globalmenu());
 
     fswStart = new QFileSystemWatcher();
     connect(fswStart, &QFileSystemWatcher::fileChanged, [=](const QString &path) {
@@ -179,11 +180,6 @@ void Start::loadRecent() // populate RecentActivity list
         (ui->recentActivitesL->setExpanded(ui->recentActivitesL->model()->index(0, 0), true));
 }
 
-void Start::on_rClearActivity_clicked()
-{
-    ui->recentActivitesL->clear();
-    QFile(QDir::homePath() + "/.config/coreBox/RecentActivity").remove();
-}
 
 // =================================
 
@@ -351,18 +347,9 @@ void Start::pageClick(QPushButton *btn, int i, QString windowTitle)
         b->setChecked(false);
     btn->setChecked(true);
     ui->pages->slideInIdx(i);
+    currentPage = i;
+    qDebug()<< currentPage;
     this->setWindowTitle(windowTitle + " - Start");
-
-    if(btn == ui->recentActivites){
-        ui->rClearActivity->setVisible(1);
-        ui->rDeleteSession->setVisible(0);
-    } else if(btn == ui->session){
-        ui->rClearActivity->setVisible(0);
-        ui->rDeleteSession->setVisible(1);
-    } else{
-        ui->rClearActivity->setVisible(0);
-        ui->rDeleteSession->setVisible(0);
-    }
 }
 
 void Start::on_coreApps_clicked()
@@ -411,3 +398,78 @@ void Start::reload(const QString &path)
     }
 }
 
+QMenu* Start::globalmenu(){
+
+    QMenu *popup = new QMenu(this);
+    qDebug()<< currentPage;
+
+    if (currentPage == 0) { // multipal file
+        qDebug()<< "0";
+    }
+
+//    if (currentPage == 2) { // multipal file
+//        qDebug()<< "2";
+        popup->addAction(ui->actionClear_Activites);
+//    }
+
+//    if (currentPage ==  3) { // multipal file
+//        qDebug()<< "3";
+        popup->addAction(ui->actionAdd_Session);
+        popup->addAction(ui->actionEdit_Session);
+        popup->addAction(ui->actionDelete_Session);
+        popup->addAction(ui->actionDelete_App);
+//    }
+
+    return popup;
+}
+
+
+void Start::on_actionAdd_Session_triggered()
+{
+    sessionSaveDialog *ssd = new sessionSaveDialog(this);
+    ssd->show();
+}
+
+void Start::on_actionDelete_Session_triggered()
+{
+    QString msg = QString("Do you want to delete the selected Session?");
+    QMessageBox message(QMessageBox::Question, tr("Confirmation "), msg, QMessageBox::Yes | QMessageBox::No);
+    message.setWindowIcon(QIcon(":/icons/start.svg"));
+    message.setStyleSheet(Utilities::getStylesheetFileContent(Utilities::StyleAppName::DialogStyle));
+
+    int merge = message.exec();
+    if (merge == QMessageBox::Cancel) return;
+    if (merge == QMessageBox::Yes) {
+
+    }
+}
+
+void Start::on_actionEdit_Session_triggered()
+{
+
+}
+
+void Start::on_actionDelete_App_triggered()
+{
+
+}
+
+void Start::on_actionClear_Activites_triggered()
+{
+    QString msg = QString("Do you want to Recent Activites list?");
+    QMessageBox message(QMessageBox::Question, tr("Confirmation "), msg, QMessageBox::Yes | QMessageBox::No);
+    message.setWindowIcon(QIcon(":/icons/start.svg"));
+    message.setStyleSheet(Utilities::getStylesheetFileContent(Utilities::StyleAppName::DialogStyle));
+
+    int merge = message.exec();
+    if (merge == QMessageBox::Cancel) return;
+    if (merge == QMessageBox::Yes) {
+        ui->recentActivitesL->clear();
+        QFile(QDir::homePath() + "/.config/coreBox/RecentActivity").remove();
+    }
+}
+
+void Start::on_actionAdd_App_triggered()
+{
+
+}

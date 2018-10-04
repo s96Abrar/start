@@ -24,5 +24,8 @@
     <qresource prefix="/">
         <file>icons/delete.svg</file>
         <file>icons/start.svg</file>
+        <file>icons/edit.svg</file>
+        <file>icons/menu.svg</file>
+        <file>icons/new_session.svg</file>
     </qresource>
 </RCC>
